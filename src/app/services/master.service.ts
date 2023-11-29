@@ -18,4 +18,8 @@ export class MasterService {
   getCarsData(){
     return this.http.get(this.endpoint+'GetAllCars')  
   }
+
+  addNewCar(newCarObj:any){
+    return this.http.post(this.endpoint+'addNewCar',newCarObj)
+  }
 }

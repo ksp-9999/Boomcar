@@ -2,15 +2,21 @@
     <div class="card-header img-fluid img-thumbnail">
         <img [src]="carData.imageUrl" alt="" >
     </div>
-    <div class="card-body">
+    <div class="card-body text-dark fw-bold p-2">
+        <div><i class="fa-solid fa-star text-warning"></i>4.5</div>
         <div>{{carData.brand}}</div>
         <div>{{carData.name}}</div>
-        <div>{{carData.locationTitle}}</div>
+        <div><i class="fa-solid fa-location-dot"></i>&nbsp;{{carData.locationTitle}}</div>
+        <div>Available from:{{carData.registeredOn | date:'dd-mm-yyyy'}}</div>
         <div><i class="fa-solid fa-indian-rupee-sign"></i>&nbsp;{{carData.pricingDescription}}</div>
     </div>
-    <div class="card-footer">
-        <ul>
-            <li *ngFor="let caracc of carData.carAccessoriess">{{caracc.accessoriesTitle}}</li>
-        </ul>
+    <div class="card-footer text-light fw-bold bg-warning">
+        <div class="mt-0 p-0">
+                <span *ngFor="let caracc of carData.carAccessoriess"><span style="display: inline-block;">*</span>{{caracc.accessoriesTitle}} &nbsp;&nbsp;</span>
+        </div>
+        <hr>
+        <div class="text-center mt-2" >
+            <button class="btn btn-success btn-md">Book</button>
+        </div>
     </div>
 </div>

@@ -1,12 +1,75 @@
 <div style="min-height: 80vh;height: auto;">
     <div class="row justify-content-between">
         <div class="col-sm-12">
-            <button class="btn btn-success btn-md">Add new car</button>
+            <button class="btn btn-success btn-md" data-bs-toggle="modal" data-bs-target="#newCarModal">Add new car</button>
         </div>
     </div>
     <div class="d-flex" style="display: flex;flex-wrap: wrap;justify-content: space-evenly; align-items: center;row-gap: 10px;">
         <div class="col-sm-3 m-1" *ngFor="let car of carsData">
             <app-cars-card [carData]="car"></app-cars-card>
+        </div>
+    </div>
+</div>
+
+
+<!-- adding new car -->
+
+<!-- Modal -->
+<div class="modal fade" id="newCarModal" tabindex="-1" aria-labelledby="newCarModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-light">
+                <h1 class="modal-title fs-5 " id="exampleModalLabel">Add New Car</h1>
+                <button type="button" class="btn-close bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="card text-dark">
+                    <form action="" class="form-group">
+                        <div class="row m-1">
+                            <div class="col-sm-6">
+                                <label for="brand">Brand</label>
+                                <input type="text" id="brand" class="form-control" placeholder="Enter Brand" [(ngModel)]="newCarObj.brand">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="name">Model Name</label>
+                                <input type="text" id="name" class="form-control" placeholder="Enter Name" [(ngModel)]="newCarObj.name">
+                            </div>
+                        </div>
+                        <div class="row m-1">
+                            <div class="col-sm-6">
+                                <label for="locationTitle">locationTitle</label>
+                                <input type="text" id="locationTitle" class="form-control" placeholder="Enter Location" [(ngModel)]="newCarObj.locationId">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="registeredOn">registeredOn</label>
+                                <input type="text" id="registeredOn" class="form-control" placeholder="Enter R Date" [(ngModel)]="newCarObj.registeredOn">
+                            </div>
+                        </div>
+                        <div class="row m-1">
+                            <div class="col-sm-6">
+                                <label for="pricingDescription">Pricing</label>
+                                <input type="text" id="pricingDescription" class="form-control" placeholder="Enter price" [(ngModel)]="newCarObj.pricing">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="name">Pricing Description</label>
+                                <input type="text" id="name" class="form-control" placeholder="price description">
+                            </div>
+                        </div>
+                        <div class="row m-2">
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" placeholder="Add Features">
+                            </div>
+                            <div class="col-sm-6 text-center">
+                                <button class="btn btn-info">Add accessories</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer bg-light">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="addNewCar()" data-bs-dismiss="modal">Add Car</button>
+            </div>
         </div>
     </div>
 </div>
