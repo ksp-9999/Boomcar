@@ -26,6 +26,10 @@ const routes:Routes=[
   {
     path:'booking',
     component:BookingComponent
+  },
+  {
+    path:'cars',
+    component:CarsComponent
   }
 ]
 @NgModule({

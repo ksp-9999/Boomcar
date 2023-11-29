@@ -14,9 +14,13 @@
 
 
         </ul>
-        <form class="d-flex">
-          <button class="btn btn-outline-primary round-button mx-2" type="button">Login</button>
-          <button class="btn btn-success round-button" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Register</button>
+        <form class="d-flex" *ngIf="!loggedUserObj">
+          <button class="btn btn-outline-primary round-button mx-2" type="button" data-bs-toggle="modal" data-bs-target="#LoginModal">Login <i class="fa-solid fa-right-to-bracket"></i></button>
+          <button class="btn btn-success round-button" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Register <i class="fa-solid fa-user-plus"></i></button>
+        </form>
+        <form class="d-flex" *ngIf="loggedUserObj">
+          <button class="btn btn-outline-primary round-button mx-2" type="button" ><i class="fa-solid fa-user"></i> {{loggedUserObj.emailId}}</button>
+          <button class="btn btn-success round-button" type="button" (click)="onLogout()">Log out <i class="fa-solid fa-right-from-bracket"></i></button>
         </form>
       </div>
     </div>
@@ -35,6 +39,11 @@
         <div class="col-md-3 text-center">Column3</div>
         <div class="col-md-3 text-center">Column4</div>
       </div>
+      <div class="row">
+        <div class="col-sm-12 text-center">
+          <i class="fa-solid fa-copyright"></i> zoomcar India pvt limited <i class="fa-solid fa-registered"></i>2023
+        </div>
+      </div>
     </div>
   </footer>
 </div>
@@ -44,8 +53,8 @@
   Launch demo modal
 </button> -->
 
-<!-- Modal -->
-<div class="modal fade"  id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Registration Modal -->
+<div class="modal fade"  id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" #modal>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header text-center bg-light">
@@ -53,7 +62,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <div class="form-group text-warning">
+        <div class="form-group text-warning" #userform>
           <div class="row mt-2">
             <div class="col-md-6">
               <label for="username">Name</label>
@@ -86,14 +95,48 @@
             </div>
             <div class="col-md-6">
               <label for="cpswd">Re-Enter Password</label>
-              <input type="password" name="cpswd" id="cpswd" class="form-control" placeholder="confirm password" [(ngModel)]="userObj.name">
+              <input type="password" name="cpswd" id="cpswd" class="form-control" placeholder="confirm password" >
             </div>
           </div>
         </div>
       </div>
       <div class="modal-footer bg-light">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" (click)="addUser()">Save changes</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addUser()">Add User</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- LoginModal -->
+<div class="modal fade" id="LoginModal" tabindex="-1" aria-labelledby="LoginModalLabel" aria-hidden="true" >
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header text-center bg-dark">
+        <h1 class="modal-title fs-5 text-center text-light fw-bold" id="exampleModalLabel">Login</h1>
+        <button type="button" class="btn-close text-light bg-light" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group text-warning">
+          <div class="row mt-2">
+            <div class="col-md-12">
+              <label for="username">Email</label>
+              <input type="email" id="loginusername" name="loginusername" [(ngModel)]="loginObj.emailId" class="form-control"
+                placeholder="Enter your name">
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-md-12">
+              <label for="email">Password</label>
+              <input type="text" id="loginemail" name="loginemail" class="form-control" placeholder="Enter Email"
+                [(ngModel)]="loginObj.password">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer bg-light">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="onLogin()">Login &nbsp;<i class="fa-solid fa-right-to-bracket"></i></button>
       </div>
     </div>
   </div>

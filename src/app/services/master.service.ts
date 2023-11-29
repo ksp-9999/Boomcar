@@ -9,6 +9,9 @@ export class MasterService {
   constructor(private http:HttpClient) { }
 
   addNewUser(userObj:any){
-    this.http.post('https://freeapi.miniprojectideas.com/api/ZoomCar/AddNewUser',userObj)
+    return this.http.post('https://freeapi.miniprojectideas.com/api/ZoomCar/AddNewUser',userObj)
+  }
+  loginUser(userObj:any){
+    return this.http.post(this.endpoint+'Login',userObj)
   }
 }
