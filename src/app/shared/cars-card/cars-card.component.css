@@ -1,0 +1,11 @@
+.card:hover{
+transform:scale(0.9);
+cursor: pointer;
+}
+ul{
+    list-style-type: none;
+}
+li{
+    float: left;
+    margin-inline: 3px;
+}

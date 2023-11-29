@@ -14,4 +14,8 @@ export class MasterService {
   loginUser(userObj:any){
     return this.http.post(this.endpoint+'Login',userObj)
   }
+
+  getCarsData(){
+    return this.http.get(this.endpoint+'GetAllCars')  
+  }
 }

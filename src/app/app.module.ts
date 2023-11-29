@@ -9,6 +9,7 @@ import { BookingComponent } from './components/booking/booking.component';
 import { CarsComponent } from './components/cars/cars.component';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { CarsCardComponent } from './shared/cars-card/cars-card.component';
 
 const routes:Routes=[
   {
@@ -38,7 +39,8 @@ const routes:Routes=[
     HomeComponent,
     SearchComponent,
     BookingComponent,
-    CarsComponent
+    CarsComponent,
+    CarsCardComponent
   ],
   imports: [
     BrowserModule,

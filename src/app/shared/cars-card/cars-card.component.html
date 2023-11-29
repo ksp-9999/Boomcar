@@ -1,0 +1,16 @@
+<div class="card">
+    <div class="card-header img-fluid img-thumbnail">
+        <img [src]="carData.imageUrl" alt="" >
+    </div>
+    <div class="card-body">
+        <div>{{carData.brand}}</div>
+        <div>{{carData.name}}</div>
+        <div>{{carData.locationTitle}}</div>
+        <div><i class="fa-solid fa-indian-rupee-sign"></i>&nbsp;{{carData.pricingDescription}}</div>
+    </div>
+    <div class="card-footer">
+        <ul>
+            <li *ngFor="let caracc of carData.carAccessoriess">{{caracc.accessoriesTitle}}</li>
+        </ul>
+    </div>
+</div>
