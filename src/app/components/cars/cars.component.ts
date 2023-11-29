@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MasterService } from 'src/app/services/master.service';
 
 @Component({
@@ -7,9 +7,9 @@ import { MasterService } from 'src/app/services/master.service';
   templateUrl: './cars.component.html',
   styleUrls: ['./cars.component.css']
 })
-export class CarsComponent {
+export class CarsComponent implements OnInit{
 carsData:any
-loggedUser=JSON.parse(String(localStorage.getItem('zoomuser')))
+
 carAccessories={
       "accessoriesId": 0,
       "accessoriesTitle": "",
@@ -17,6 +17,15 @@ carAccessories={
       "carId": 0
     }
 caraccArr:any[]=[]
+userId:any=0
+constructor(private master:MasterService, private http:HttpClient){
+this.getCarsData()
+}
+ngOnInit(): void {
+  let loggedUser=JSON.parse(String(localStorage.getItem('zoomuser')))
+  this.userId=loggedUser.userId
+  console.log(this.userId);
+}
 newCarObj={
   "carId": 0,
   "brand": "",
@@ -27,14 +36,10 @@ newCarObj={
   "registeredOn": new Date(),
   "imageUrl": "",
   "vehicleNo": "",
-  "ownerUserId": 0,
+  "ownerUserId": this.userId,
   "ZoomCarAccessoriess":this.caraccArr
 }
-constructor(private master:MasterService, private http:HttpClient){
-this.getCarsData()
-}
-onInit(){
-}
+
 
 addAccessory(){
   this.caraccArr.push(this.carAccessories)
@@ -53,6 +58,7 @@ this.master.getCarsData().subscribe((res:any)=>{
 }
 
 addNewCar(){
+  debugger
   this.master.addNewCar(this.newCarObj).subscribe((res:any)=>{
     console.log(res);
     if(res.result){
@@ -67,7 +73,7 @@ addNewCar(){
   "registeredOn": new Date(),
   "imageUrl": "",
   "vehicleNo": "",
-  "ownerUserId": this.loggedUser.userId,
+  "ownerUserId": 0,
   "ZoomCarAccessoriess":this.caraccArr
 }
     }else{
