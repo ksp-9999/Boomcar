@@ -9,12 +9,14 @@ import { MasterService } from 'src/app/services/master.service';
 })
 export class CarsComponent {
 carsData:any
+loggedUser=JSON.parse(String(localStorage.getItem('zoomuser')))
 carAccessories={
       "accessoriesId": 0,
       "accessoriesTitle": "",
       "showOnWebsite": true,
       "carId": 0
     }
+caraccArr:any[]=[]
 newCarObj={
   "carId": 0,
   "brand": "",
@@ -22,11 +24,11 @@ newCarObj={
   "pricingDescription": "",
   "pricing": 0,
   "locationId": 0,
-  "registeredOn": "2023-11-29T10:07:03.328Z",
+  "registeredOn": new Date(),
   "imageUrl": "",
   "vehicleNo": "",
   "ownerUserId": 0,
-  "ZoomCarAccessoriess":[]
+  "ZoomCarAccessoriess":this.caraccArr
 }
 constructor(private master:MasterService, private http:HttpClient){
 this.getCarsData()
@@ -35,21 +37,42 @@ onInit(){
 }
 
 addAccessory(){
-  this.newCarObj.ZoomCarAccessoriess=[]
+  this.caraccArr.push(this.carAccessories)
+  this.carAccessories={
+      "accessoriesId": 0,
+      "accessoriesTitle": "",
+      "showOnWebsite": true,
+      "carId": 0
+    }
 }
 
 getCarsData(){
-  debugger
 this.master.getCarsData().subscribe((res:any)=>{
   this.carsData=res.data
-  console.log(res.data);
-  
 })
 }
 
 addNewCar(){
   this.master.addNewCar(this.newCarObj).subscribe((res:any)=>{
-
+    console.log(res);
+    if(res.result){
+      alert("New Car Added")
+      this.newCarObj={
+  "carId": 0,
+  "brand": "",
+  "name": "",
+  "pricingDescription": "",
+  "pricing": 0,
+  "locationId": 0,
+  "registeredOn": new Date(),
+  "imageUrl": "",
+  "vehicleNo": "",
+  "ownerUserId": this.loggedUser.userId,
+  "ZoomCarAccessoriess":this.caraccArr
+}
+    }else{
+      alert("Please check your details")
+    }
   })
 }
 }

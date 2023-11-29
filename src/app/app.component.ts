@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MasterService } from './services/master.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -8,7 +9,7 @@ import { MasterService } from './services/master.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private master:MasterService){
+  constructor(private master:MasterService, private router:Router){
     const local=localStorage.getItem('zoomuser')
     if(local!=null){
       this.loggedUserObj=JSON.parse(local)
@@ -62,6 +63,7 @@ onLogin(){
       alert("Login successfull")
       localStorage.setItem("zoomuser",JSON.stringify(res.data))
       this.loggedUserObj=res.data
+      this.router.navigate(['/cars'])
     }else{
       alert('login failed')
     }
@@ -74,6 +76,7 @@ onLogout(){
   if(islogout){
     localStorage.removeItem('zoomuser')
   }
-  this.loggedUserObj=null
+  this.loggedUserObj=null;
+  this.router.navigate(['/home'])
 }
 }

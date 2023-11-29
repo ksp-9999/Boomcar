@@ -20,6 +20,8 @@ export class MasterService {
   }
 
   addNewCar(newCarObj:any){
+    console.log(newCarObj);
+    
     return this.http.post(this.endpoint+'addNewCar',newCarObj)
   }
 }

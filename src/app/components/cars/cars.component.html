@@ -28,39 +28,49 @@
                         <div class="row m-1">
                             <div class="col-sm-6">
                                 <label for="brand">Brand</label>
-                                <input type="text" id="brand" class="form-control" placeholder="Enter Brand" [(ngModel)]="newCarObj.brand">
+                                <input type="text" id="brand" name="brand" class="form-control" placeholder="Enter Brand" [(ngModel)]="newCarObj.brand">
                             </div>
                             <div class="col-sm-6">
                                 <label for="name">Model Name</label>
-                                <input type="text" id="name" class="form-control" placeholder="Enter Name" [(ngModel)]="newCarObj.name">
+                                <input type="text" id="name" name="name" class="form-control" placeholder="Enter Name" [(ngModel)]="newCarObj.name">
                             </div>
                         </div>
                         <div class="row m-1">
                             <div class="col-sm-6">
                                 <label for="locationTitle">locationTitle</label>
-                                <input type="text" id="locationTitle" class="form-control" placeholder="Enter Location" [(ngModel)]="newCarObj.locationId">
+                                <input type="text" id="locationTitle" name="locationTitle" class="form-control" placeholder="Enter Location" [(ngModel)]="newCarObj.locationId">
                             </div>
                             <div class="col-sm-6">
                                 <label for="registeredOn">registeredOn</label>
-                                <input type="text" id="registeredOn" class="form-control" placeholder="Enter R Date" [(ngModel)]="newCarObj.registeredOn">
+                                <input type="date" id="registeredOn" name="registeredOn" class="form-control" placeholder="Enter R Date" [(ngModel)]="newCarObj.registeredOn">
                             </div>
                         </div>
                         <div class="row m-1">
                             <div class="col-sm-6">
                                 <label for="pricingDescription">Pricing</label>
-                                <input type="text" id="pricingDescription" class="form-control" placeholder="Enter price" [(ngModel)]="newCarObj.pricing">
+                                <input type="text" id="pricingDescription" name="pricingDescription" class="form-control" placeholder="Enter price" [(ngModel)]="newCarObj.pricing">
                             </div>
                             <div class="col-sm-6">
-                                <label for="name">Pricing Description</label>
-                                <input type="text" id="name" class="form-control" placeholder="price description">
+                                <label for="pricingDescription">Pricing Description</label>
+                                <input type="text" id="pricingDescription" name="pricingDescription" class="form-control" placeholder="price description" [(ngModel)]="newCarObj.pricingDescription">
+                            </div>
+                        </div>
+                        <div class="row m-1">
+                            <div class="col-sm-6">
+                                <label for="imageUrl">Paste Image URL</label>
+                                <input type="text" id="imageUrl" class="form-control" name="imageUrl" placeholder="Enter image url" [(ngModel)]="newCarObj.imageUrl">
+                            </div>
+                            <div class="col-sm-6">
+                                <label for="Vehicle">Enter Vehicle Number</label>
+                                <input type="text" id="Vehicle" name="Vehicle" class="form-control" placeholder="Enter Vehicle Number" [(ngModel)]="newCarObj.vehicleNo">
                             </div>
                         </div>
                         <div class="row m-2">
                             <div class="col-sm-6">
-                                <input type="text" class="form-control" placeholder="Add Features">
+                                <input type="text" name="feature" class="form-control" placeholder="Add Features" [(ngModel)]="carAccessories.accessoriesTitle">
                             </div>
                             <div class="col-sm-6 text-center">
-                                <button class="btn btn-info">Add accessories</button>
+                                <button class="btn btn-info" (click)="addAccessory()">Add accessories</button>
                             </div>
                         </div>
                     </form>
