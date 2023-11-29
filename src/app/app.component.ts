@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MasterService } from './services/master.service';
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Boomcar';
+  constructor(private master:MasterService){}
+  userId=1
+  userObj:any={
+  "userId":this.userId,
+  "name":'',
+  "userRole":'',
+  "emailId":'',
+  "mobileNo":'',
+  "password":'',
+  "createdOn":new Date()
+}
+addUser(){
+  this.master.addNewUser(this.userObj)
+  this.userId++
+}
 }

@@ -1,1 +1,100 @@
-<h1>This is Boom Car App</h1>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-secondary">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img id="logoSize" src="https://www.zoomcar.com/blog/wp-content/uploads/2020/03/footer-logo.png" alt=""
+          class="d-inline-block align-text-top">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+
+        </ul>
+        <form class="d-flex">
+          <button class="btn btn-outline-primary round-button mx-2" type="button">Login</button>
+          <button class="btn btn-success round-button" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">Register</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+</body>
+<div class=" pt-3">
+<router-outlet></router-outlet>
+</div>
+
+<div class="footer">
+  <footer>
+    <div class="box bg-dark text-light" style="width: 100%;height: 30vh;">
+      <div class="row">
+        <div class="col-md-3 text-center">Column1</div>
+        <div class="col-md-3 text-center">Column2</div>
+        <div class="col-md-3 text-center">Column3</div>
+        <div class="col-md-3 text-center">Column4</div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" >
+  Launch demo modal
+</button> -->
+
+<!-- Modal -->
+<div class="modal fade"  id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header text-center bg-light">
+        <h1 class="modal-title fs-5 text-center text-dark fw-bold" id="exampleModalLabel">Registration</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group text-warning">
+          <div class="row mt-2">
+            <div class="col-md-6">
+              <label for="username">Name</label>
+              <input type="text" id="username" name="username" [(ngModel)]="userObj.name" class="form-control" placeholder="Enter your name">
+            </div>
+            <div class="col-md-6">
+              <label for="email">Email</label>
+              <input type="text" id="email" name="email" class="form-control" placeholder="Enter Email" [(ngModel)]="userObj.emailId">
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-md-6">
+              <label for="mobile">Mobile</label>
+              <input type="text" name="mobile" id="mobile" class="form-control" [(ngModel)]="userObj.mobileNo" placeholder="Enter Mobile">
+            </div>
+            <div class="col-md-6">
+              <label for="role">Who are you</label>
+              <!-- <input type="" class="form-control" id="role" placeholder="Select role"> -->
+              <select name="role" id="role" class="form-control" [(ngModel)]="userObj.userRole">
+                <option value="">select your role</option>
+                <option value="customer">customer</option>
+                <option value="carowner">car owner</option>
+              </select>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="col-md-6">
+              <label for="pswd">Password</label>
+              <input type="password" name="pswd" id="pswd" class="form-control" placeholder="Enter Password" [(ngModel)]="userObj.password">
+            </div>
+            <div class="col-md-6">
+              <label for="cpswd">Re-Enter Password</label>
+              <input type="password" name="cpswd" id="cpswd" class="form-control" placeholder="confirm password" [(ngModel)]="userObj.name">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer bg-light">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="addUser()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>

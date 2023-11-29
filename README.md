@@ -28,4 +28,13 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 <!-- project documentation here  -->
 components requires:
-Home component,search component,
+Home component,search component,Booking component, modal popup for login and registration.
+
+Reusable component:
+carCard component
+
+services:
+carservice
+
+Roles:
+customer,carowner
